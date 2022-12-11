@@ -12,6 +12,7 @@ const DetailsDB = () => {
   const { product_id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
+  console.log(product);
 
   const getProductsFromDB = async () => {
     await getProductAction(product_id, dispatch);

@@ -1,6 +1,6 @@
 
 import axios from "axios";
-const API_BASE = process.env.REACT_APP_API_SARK || "http://localhost:4300/api";
+const API_BASE = "https://tuiter-node-server-app-rishi.herokuapp.com/api";
 const LIKES_API = `${API_BASE}/likes`;
 export const LikesService = async () => {
   const response = await axios.get(LIKES_API);

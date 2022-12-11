@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_SARK || "http://localhost:4300/api";
+const API_URL = "https://tuiter-node-server-app-rishi.herokuapp.com/api";
 let GET_USER_PUBLIC_DETAILS_URL = `${API_URL}/users/`;
 export const GetUserPublicInformation = async (id) => {
   const data = await axios.get(`${GET_USER_PUBLIC_DETAILS_URL}${id}`);

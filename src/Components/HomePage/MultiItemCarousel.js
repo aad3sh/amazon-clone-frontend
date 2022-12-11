@@ -29,27 +29,32 @@ const MultiItemCarousel = () => {
 
   const SearchByTitle = () => {
     var colors = [
-      "vodka",
-      "rum",
-      "gin",
-      "beer",
-      "brandy",
-      "wine",
-      "tequila",
+      "burger",
+      "apple, flour",
+      "flour",
+      "eggs",
+      "wheat",
+      "cornflour",
     ];
     var randColor = colors[Math.floor(Math.random() * colors.length)];
     const options = {
       method: 'GET',
-      url: 'https://the-cocktail-db.p.rapidapi.com/search.php',
-      params: {s: randColor},
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
+      params: {
+        ingredients: randColor,
+        number: '5',
+        ignorePantry: 'true',
+        ranking: '1'
+      },
       headers: {
         'X-RapidAPI-Key': 'a198a79ae2msh34c31ec11e806e5p14816djsnc59ed2f61d6d',
-        'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com'
+        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
       }
     };
 
     axios.request(options).then(function (response) {
-      setProduct(response.data.drinks);
+      setProduct(response.data);
+      console.log(product);
     }).catch(function (error) {
       console.error(error);
     });
@@ -60,16 +65,12 @@ const MultiItemCarousel = () => {
   }, []);
 
   const Card = ({p}) => {
-    console.log("Hello")
-    console.log(p)
-    console.log("there")
-    console.log(p);
     const price =  Math.floor(Math.random() * 50) + 15;
     return (
       <div style={{ textAlign: "center", margin: "20px" }}>
         <img
           className="multi-image"
-          src={p['strDrinkThumb']}
+          src={p['image']}
           style={{
             width: "100%",
             height: "210px",
@@ -80,16 +81,16 @@ const MultiItemCarousel = () => {
           alt="Product Details"
         />
         <h5
-          className="text"
+          className="text link-light"
           style={{ fontSize: "15px", padding: "5px 0", textDecoration: "none" }}
         >
-          {p['strDrink']}
+          {p['title']}
         </h5>
         <h5
           style={{ fontSize: "15px", padding: "5px 0", textDecoration: "none" }}
         >
           <span style={{ textDecoration: "line-through", color: "grey" }}>
-            ${price + 43}
+            ${price+43}
           </span>
           <span style={{ color: "green", padding: "0px 2px" }}>
             ${price}
@@ -140,11 +141,11 @@ const MultiItemCarousel = () => {
           product.map((p) => {
             return (
               <Link
-                to={`details/${p.idDrink}`}
+                to={`details/${p.id}`}
                 style={{ textDecoration: "none", color: "black" }}
-                key={"l" + p.idDrink}
+                key={"l" + p.id}
               >
-                <Card p={p} key={p['idDrinks']} />
+                <Card p={p} key={p['id']} />
               </Link>
             );
           })}

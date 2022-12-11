@@ -5,7 +5,9 @@
 .wd-bg-transparent {
     background-color: rgba(194, 227, 227, 0.274);
 }
-
+.wd-bg-change {
+    background-color: rgba(231, 233, 234, 0.1);
+}
 .wd-bg-image {
 
     background-image: url("../Images/search_background2.jpeg");

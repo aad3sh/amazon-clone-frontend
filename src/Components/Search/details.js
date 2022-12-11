@@ -12,60 +12,37 @@ const Details = () => {
   const [product, setProduct] = useState([]);
   const [priceInfo, setPriceInfo] = useState([]);
   const [productAllDetails, setProductAllDetails] = useState([]);
-  const [data, setData] = useState({
-    name: "",
-    imageUrl: "",
-    price: 0,
-    manufacturer: "",
-    asin: "",
-    country: "",
-    originalPrice: 0,
-    discount: 0,
-    discountPercentage: 0,
-    currency: "",
-    vid: "",
-  });
+  const [data, setData] = useState({});
   const { product_id } = useParams();
   const login = useSelector((state) => state.LogIn);
+  const params = ['vegetarian','aggregateLikes','glutenFree','dishTypes','healthScore','diets','pricePerServing','readyInMinutes',
+  'servings','instructions']
+  const paramsNew = ['name','price']
 
   const addToCart = () => {
     AddProductAction(data);
   };
   const productDetails = () => {
     const options = {
-      method: "GET",
-      url: `https://amazon24.p.rapidapi.com/api/product/${product_id}`,
-      params: { country: "US" },
+      method: 'GET',
+      url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${product_id}/information`,
       headers: {
-        "X-RapidAPI-Host": "amazon24.p.rapidapi.com",
-        "X-RapidAPI-Key": "7c3530cf95msh4a42849e06f7945p146398jsne990820a2f14",
-      },
+        'X-RapidAPI-Key': 'a198a79ae2msh34c31ec11e806e5p14816djsnc59ed2f61d6d',
+        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+      }
     };
 
     axios
       .request(options)
       .then(function (response) {
-        setproductTitle(response.data.product_title);
-        setProduct(response.data.product_details);
-        setPriceInfo(response.data.price_information);
+        setproductTitle(response.data['title']);
+        setProduct(response.data);
         setProductAllDetails(response.data);
         setData({
           ...data,
-          name: response.data.product_title,
+          name: response.data['title'],
           asin: product_id,
-          imageUrl: response.data.product_main_image_url,
-          manufacturer: response.data.product_details["_Manufacturer_"],
-          originalPrice: Number(
-            response.data.price_information["original_price"]
-          ),
-          price: Number(response.data.price_information["app_sale_price"]),
-          currency: response.data.price_information["currency"],
-          discount: Number(response.data.price_information["discount"])
-            ? -1 * Number(response.data.price_information["discount"])
-            : Number(response.data.price_information["discount"]),
-          discountPercentage: Number(
-            response.data.price_information["discount_percentage"]
-          ),
+          imageUrl: response.data['image']
         });
       })
       .catch(function (error) {
@@ -73,8 +50,29 @@ const Details = () => {
       });
   };
 
+  const priceBreakdown = () => {
+    const options = {
+      method: 'GET',
+      url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${product_id}/priceBreakdownWidget.json`,
+      headers: {
+        'X-RapidAPI-Key': 'a198a79ae2msh34c31ec11e806e5p14816djsnc59ed2f61d6d',
+        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+      }
+    };
+
+    axios
+        .request(options)
+        .then(function (response) {
+          setPriceInfo(response.data['ingredients']);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+  };
+
   useEffect(() => {
     productDetails();
+    priceBreakdown();
 
     /* eslint-disable-next-line */
   }, []);
@@ -99,17 +97,20 @@ const Details = () => {
             )}
           </div>
         </div>
-
         <div className="my-3 mx-auto" style={{ textAlign: "center" }}>
           <img
-            src={productAllDetails.product_main_image_url}
+            src={productAllDetails['image']}
             height={300}
             alt="All product Details"
           />
         </div>
-
         <ul className="list-group mt-5">
-          {Object.keys(product).map((prod) => (
+          {Object.keys(product).filter(function(prod) {
+            if (params.includes(prod) && product[prod]!==null) {
+              return true;
+            }
+            return false;
+          }).map((prod) => (
             <li className="list-group-item">
               <div className="row">
                 <div className="col-md-4 ">
@@ -119,25 +120,27 @@ const Details = () => {
                   :
                 </div>
                 <div className="col-md-8 ">
-                  <span>{product[prod]}</span>
+                  <span>{String(product[prod])}</span>
                 </div>
               </div>
             </li>
           ))}
+          <br></br>
+          <h4>Ingredients breakdown</h4>
           {Object.keys(priceInfo).map((prod) => (
-            <li className="list-group-item">
-              <div className="row">
-                <div className="col-md-4">
+              <li className="list-group-item">
+                <div className="row">
+                  <div className="col-md-4 ">
                   <span>
-                    <b>{prod.replaceAll("_", " ").trim()}</b>
+                    <b>{priceInfo[prod]['name'].replaceAll("_", " ").trim()}</b>
                   </span>{" "}
-                  :
+                    :
+                  </div>
+                  <div className="col-md-8 ">
+                    <span>{String(priceInfo[prod]['price'])}</span>
+                  </div>
                 </div>
-                <div className="col-md-8">
-                  <span>{priceInfo[prod]}</span>
-                </div>
-              </div>
-            </li>
+              </li>
           ))}
           {/* <li className="list-group-item">
             <div className="row">

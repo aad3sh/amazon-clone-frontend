@@ -7,7 +7,7 @@ import { getProductsByNameAction } from "../Actions/AddProduct";
 const Search = () => {
   const [products, setProducts] = useState([]);
   const [dbproducts, setDbproducts] = useState([]);
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState([]);
   const { productName } = useParams();
   const Navigate = useNavigate();
   const productRef = useRef();
@@ -26,35 +26,34 @@ const Search = () => {
   };
 
   const searchProducts = () => {
-    searchProductsByName();
+    // searchProductsByName();
 
     if (productRef.current.value !== null && productRef.current.value !== "") {
       searchString = productRef.current.value;
     } else if (productName !== undefined) {
       searchString = productName;
-      setSearchText(productName);
+      setSearchText(searchString);
     }
     if (searchString !== "") {
       const options = {
-        method: "GET",
-        url: "https://amazon24.p.rapidapi.com/api/product",
+        method: 'GET',
+        url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
         params: {
-          categoryID: "aps",
-          keyword: { searchString },
-          country: "US",
-          page: "1",
+          ingredients: searchString,
+          ignorePantry: 'true',
+          ranking: '1'
         },
         headers: {
-          "X-RapidAPI-Host": "amazon24.p.rapidapi.com",
-          "X-RapidAPI-Key":
-            "7c3530cf95msh4a42849e06f7945p146398jsne990820a2f14",
-        },
+          'X-RapidAPI-Key': 'a198a79ae2msh34c31ec11e806e5p14816djsnc59ed2f61d6d',
+          'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+        }
       };
 
       axios
         .request(options)
         .then(function (response) {
-          setProducts(response.data.docs);
+          setProducts(response.data);
+          console.log(products);
         })
         .catch(function (error) {});
     }
@@ -67,7 +66,7 @@ const Search = () => {
   }, []);
 
   return (
-    <div className="row wd-bg-image">
+    <div className="row wd-bg-transparent">
       <div className="mt-3 mb-3">
         <div className="mt-1 mb-3 input-icons">
           <div className="row">
@@ -151,33 +150,33 @@ const Search = () => {
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
-                <strong>From 3rd Party Api</strong>
+                <strong>Search Results</strong>
               </button>
             </h2>
             <div
               id="panelsStayOpen-collapseTwo"
-              className="accordion-collapse collapse"
+              className="accordion-collapse"
               aria-labelledby="panelsStayOpen-headingTwo"
             >
               <div className="accordion-body">
                 <ul className="list-group">
-                  {products.map((product) => (
+                  {products.map((prod) => (
                     <li
                       className="list-group-item"
-                      style={{ backgroundColor: "rgba(137, 215, 245, 0.83)" }}
-                      key={"l" + product.product_id}
+                      style={{ backgroundColor: "rgba(194, 227, 227, 0.274)" }}
+                      key={"l" + prod['id']}
                     >
-                      <Link to={`/details/${product.product_id}`}>
+                      <Link to={`/details/${prod['id']}`}>
                         <div className="row">
                           <div className="col-2">
                             <img
-                              src={product.product_main_image_url}
+                              src={prod['image']}
                               className="me-3"
                               height={60}
                               alt="Product"
                             />
                           </div>
-                          <div className="col-9">{product.product_title}</div>
+                          <div className="col-9 link-dark">{prod['title']}</div>
                         </div>
                       </Link>
                     </li>
@@ -191,5 +190,4 @@ const Search = () => {
     </div>
   );
 };
-
 export default Search;

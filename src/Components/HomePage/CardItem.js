@@ -13,7 +13,7 @@ const Card = () => {
   useEffect(() => {
     GetLikes().then((data) => setLikes(data));
   }, []);
-  return (
+    return (
     <>
       {login.logedIn && (
         <div className="text-end mt-2">

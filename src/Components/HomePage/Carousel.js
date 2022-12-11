@@ -75,7 +75,7 @@ const Carousel = () => {
       >
         <div>
           <img
-              src="https://wallpaperaccess.com/full/1663378.jpg"
+              src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg"
               style={{ width: "100%", height: "90vh" }}
               alt="Profile Banners"
           />
@@ -84,7 +84,7 @@ const Carousel = () => {
 
         <div>
           <img
-              src="https://www.tourissimo.travel/hubfs/Blog_pictures/Spritz/Spritz%20Blog.jpg"
+              src="https://wallpapershome.com/images/wallpapers/food-2560x1440-cooking-grill-vegetables-peppers-mushrooms-tomatoes-403.jpg"
               style={{ width: "100%", height: "90vh" }}
               alt="Profile Banners"
           />
@@ -92,7 +92,7 @@ const Carousel = () => {
 
         <div>
           <img
-              src="https://media.cntraveler.com/photos/5ea6276040ddb800081611ff/16:9/w_2560%2Cc_limit/AperolSprtiz-GettyImages-1133252122.jpg"
+              src="https://burst.shopifycdn.com/photos/flatlay-iron-skillet-with-meat-and-other-food.jpg?width=1200&format=pjpg&exif=1&iptc=1"
               style={{ width: "100%", height: "90vh" }}
               alt="Profile Banners"
           />
