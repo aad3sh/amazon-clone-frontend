@@ -58,29 +58,6 @@ const Header = () => {
                 </Link>
               </li>
             )}
-            {login.logedIn && !isAdminService() && isDealerService() && (
-              <li className="nav-item active mx-3">
-                <Link className="nav-link wd-nav-bg-color" to="/dealer">
-                  <i
-                    className="fa-solid fa-coins"
-                    style={{ color: "white" }}
-                  ></i>
-                  &nbsp;Dealer
-                </Link>
-              </li>
-            )}
-            {login.logedIn && isAdminService() && !isDealerService() && (
-              <li className="nav-item active mx-3">
-                <Link className="nav-link wd-nav-bg-color" to="/admin">
-                  <i
-                    className="fa-solid fa-unlock"
-                    style={{ color: "white" }}
-                  ></i>
-                  &nbsp;Admin
-                </Link>
-              </li>
-            )}
-
             {login.logedIn ? (
               <li className="nav-item active mx-3">
                 <Link
@@ -94,7 +71,7 @@ const Header = () => {
                     className="fa-solid fa-right-from-bracket"
                     style={{ color: "white" }}
                   ></i>
-                  <strong> &nbsp;LogOut</strong>
+                  <strong> &nbsp;Logout</strong>
                 </Link>
               </li>
             ) : (
@@ -108,7 +85,7 @@ const Header = () => {
                     className="fa-solid fa-right-to-bracket"
                     style={{ color: "white" }}
                   ></i>
-                  <strong> &nbsp;LogIn</strong>
+                  <strong> &nbsp;Login</strong>
                 </Link>
               </li>
             )}

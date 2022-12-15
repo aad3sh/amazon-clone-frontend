@@ -12,14 +12,8 @@ const Dealers = () => {
     name: "",
     imageUrl: "",
     price: 0,
-    manufacturer: "",
-    asin: "",
-    country: "",
-    originalPrice: 0,
-    discount: 0,
-    discountPercentage: 0,
-    currency: "",
-    vid: "",
+    recipe: "",
+    ingredients: ""
   });
   const [errors, updateErrors] = useState({});
   const [valid, setValid] = useState(false);
@@ -83,7 +77,7 @@ const Dealers = () => {
               value={data.name}
               onChange={(event) => putData(event)}
             />
-            <label htmlFor="Name">Product Name</label>
+            <label htmlFor="Name">Recipe Name</label>
             <p className="text-danger">{errors.name ? errors.name : ""}</p>
           </div>
           <div className="form-floating my-3">
@@ -117,110 +111,110 @@ const Dealers = () => {
             <input
               type="text"
               className={`form-control${
-                errors.manufacturer ? " is-invalid" : ""
+                errors.ingredients ? " is-invalid" : ""
               }`}
-              id="Manufacturer"
-              name="manufacturer"
-              value={data.manufacturer}
+              id="Ingredients"
+              name="ingredients"
+              value={data.ingredients}
               onChange={(event) => putData(event)}
             />
-            <label htmlFor="Manufacturer">Manufacturer </label>
+            <label htmlFor="Ingredients">Ingredients </label>
             <p className="text-danger">
-              {errors.manufacturer ? errors.manufacturer : ""}
+              {errors.ingredients ? errors.ingredients : ""}
             </p>
           </div>
 
-          <div className="form-floating my-3">
-            <input
-              type="text"
-              className={`form-control${errors.asin ? " is-invalid" : ""}`}
-              id="Asin"
-              name="asin"
-              value={data.asin}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="Asin">ASIN </label>
-            <p className="text-danger">{errors.asin ? errors.asin : ""}</p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="text"*/}
+          {/*    className={`form-control${errors.asin ? " is-invalid" : ""}`}*/}
+          {/*    id="Asin"*/}
+          {/*    name="asin"*/}
+          {/*    value={data.asin}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="Asin">ASIN </label>*/}
+          {/*  <p className="text-danger">{errors.asin ? errors.asin : ""}</p>*/}
+          {/*</div>*/}
 
-          <div className="form-floating my-3">
-            <input
-              type="text"
-              className={`form-control${errors.country ? " is-invalid" : ""}`}
-              id="Country"
-              name="country"
-              value={data.country}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="Country">Country </label>
-            <p className="text-danger">
-              {errors.country ? errors.country : ""}
-            </p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="text"*/}
+          {/*    className={`form-control${errors.country ? " is-invalid" : ""}`}*/}
+          {/*    id="Country"*/}
+          {/*    name="country"*/}
+          {/*    value={data.country}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="Country">Country </label>*/}
+          {/*  <p className="text-danger">*/}
+          {/*    {errors.country ? errors.country : ""}*/}
+          {/*  </p>*/}
+          {/*</div>*/}
 
-          <div className="form-floating my-3">
-            <input
-              type="number"
-              className={`form-control${
-                errors.originalPrice ? " is-invalid" : ""
-              }`}
-              id="OriginalPrice"
-              name="originalPrice"
-              value={data.originalPrice}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="OriginalPrice">Original Price </label>
-            <p className="text-danger">
-              {errors.originalPrice ? errors.originalPrice : ""}
-            </p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="number"*/}
+          {/*    className={`form-control${*/}
+          {/*      errors.originalPrice ? " is-invalid" : ""*/}
+          {/*    }`}*/}
+          {/*    id="OriginalPrice"*/}
+          {/*    name="originalPrice"*/}
+          {/*    value={data.originalPrice}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="OriginalPrice">Original Price </label>*/}
+          {/*  <p className="text-danger">*/}
+          {/*    {errors.originalPrice ? errors.originalPrice : ""}*/}
+          {/*  </p>*/}
+          {/*</div>*/}
 
-          <div className="form-floating my-3">
-            <input
-              type="number"
-              className={`form-control${errors.discount ? " is-invalid" : ""}`}
-              id="Discount"
-              name="discount"
-              value={data.discount}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="Discount">Discount </label>
-            <p className="text-danger">
-              {errors.discount ? errors.discount : ""}
-            </p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="number"*/}
+          {/*    className={`form-control${errors.discount ? " is-invalid" : ""}`}*/}
+          {/*    id="Discount"*/}
+          {/*    name="discount"*/}
+          {/*    value={data.discount}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="Discount">Discount </label>*/}
+          {/*  <p className="text-danger">*/}
+          {/*    {errors.discount ? errors.discount : ""}*/}
+          {/*  </p>*/}
+          {/*</div>*/}
 
-          <div className="form-floating my-3">
-            <input
-              type="number"
-              className={`form-control${
-                errors.discountPercentage ? " is-invalid" : ""
-              }`}
-              id="DiscountPercentage"
-              name="discountPercentage"
-              value={data.discountPercentage}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="DiscountPercentage">Discount Percentage </label>
-            <p className="text-danger">
-              {errors.discountPercentage ? errors.discountPercentage : ""}
-            </p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="number"*/}
+          {/*    className={`form-control${*/}
+          {/*      errors.discountPercentage ? " is-invalid" : ""*/}
+          {/*    }`}*/}
+          {/*    id="DiscountPercentage"*/}
+          {/*    name="discountPercentage"*/}
+          {/*    value={data.discountPercentage}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="DiscountPercentage">Discount Percentage </label>*/}
+          {/*  <p className="text-danger">*/}
+          {/*    {errors.discountPercentage ? errors.discountPercentage : ""}*/}
+          {/*  </p>*/}
+          {/*</div>*/}
 
-          <div className="form-floating my-3">
-            <input
-              type="text"
-              className={`form-control${errors.currency ? " is-invalid" : ""}`}
-              id="Currency"
-              name="currency"
-              value={data.currency}
-              onChange={(event) => putData(event)}
-            />
-            <label htmlFor="Currency">Currency </label>
-            <p className="text-danger">
-              {errors.currency ? errors.currency : ""}
-            </p>
-          </div>
+          {/*<div className="form-floating my-3">*/}
+          {/*  <input*/}
+          {/*    type="text"*/}
+          {/*    className={`form-control${errors.currency ? " is-invalid" : ""}`}*/}
+          {/*    id="Currency"*/}
+          {/*    name="currency"*/}
+          {/*    value={data.currency}*/}
+          {/*    onChange={(event) => putData(event)}*/}
+          {/*  />*/}
+          {/*  <label htmlFor="Currency">Currency </label>*/}
+          {/*  <p className="text-danger">*/}
+          {/*    {errors.currency ? errors.currency : ""}*/}
+          {/*  </p>*/}
+          {/*</div>*/}
           <div>
             <button
               className="btn btn-primary rounded-pill w-100 p-2"
@@ -250,7 +244,7 @@ const Dealers = () => {
 
                   <div className="row mx-auto mb-auto">
                     <div className="col-12 w-100 my-3">
-                      {element.asin && (
+                      {element._id && (
                         <Link to={`/details_db/${element._id}`}>
                           <button className="btn btn-primary w-100">
                             Show

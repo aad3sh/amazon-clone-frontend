@@ -19,7 +19,6 @@ const DetailsDB = () => {
   };
   useEffect(() => {
     getProductsFromDB();
-    /* eslint-disable-next-line */
   }, []);
 
   return (
@@ -83,55 +82,55 @@ const DetailsDB = () => {
               </div>
             </div>
           </li> */}
+          {/*<li className="list-group-item">*/}
+          {/*  <div className="row">*/}
+          {/*    <div className="col col-md-4">*/}
+          {/*      <span>*/}
+          {/*        <b>currency</b>*/}
+          {/*      </span>{" "}*/}
+          {/*      :*/}
+          {/*    </div>*/}
+          {/*    <div className="col col-md-8">*/}
+          {/*      <span>{product["currency"]}</span>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</li>*/}
+          {/*<li className="list-group-item">*/}
+          {/*  <div className="row">*/}
+          {/*    <div className="col col-md-4">*/}
+          {/*      <span>*/}
+          {/*        <b>originalPrice</b>*/}
+          {/*      </span>{" "}*/}
+          {/*      :*/}
+          {/*    </div>*/}
+          {/*    <div className="col col-md-8">*/}
+          {/*      <span>{product["originalPrice"]}</span>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</li>*/}
+          {/*<li className="list-group-item">*/}
+          {/*  <div className="row">*/}
+          {/*    <div className="col col-md-4">*/}
+          {/*      <span>*/}
+          {/*        <b>discount</b>*/}
+          {/*      </span>{" "}*/}
+          {/*      :*/}
+          {/*    </div>*/}
+          {/*    <div className="col col-md-8">*/}
+          {/*      <span>{product["discount"]}</span>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</li>*/}
           <li className="list-group-item">
             <div className="row">
               <div className="col col-md-4">
                 <span>
-                  <b>currency</b>
+                  <b>ingredients: </b>
                 </span>{" "}
                 :
               </div>
               <div className="col col-md-8">
-                <span>{product["currency"]}</span>
-              </div>
-            </div>
-          </li>
-          <li className="list-group-item">
-            <div className="row">
-              <div className="col col-md-4">
-                <span>
-                  <b>originalPrice</b>
-                </span>{" "}
-                :
-              </div>
-              <div className="col col-md-8">
-                <span>{product["originalPrice"]}</span>
-              </div>
-            </div>
-          </li>
-          <li className="list-group-item">
-            <div className="row">
-              <div className="col col-md-4">
-                <span>
-                  <b>discount</b>
-                </span>{" "}
-                :
-              </div>
-              <div className="col col-md-8">
-                <span>{product["discount"]}</span>
-              </div>
-            </div>
-          </li>
-          <li className="list-group-item">
-            <div className="row">
-              <div className="col col-md-4">
-                <span>
-                  <b>discountPercentage</b>
-                </span>{" "}
-                :
-              </div>
-              <div className="col col-md-8">
-                <span>{product["discountPercentage"]}</span>
+                <span>{product["ingredients"]}</span>
               </div>
             </div>
           </li>

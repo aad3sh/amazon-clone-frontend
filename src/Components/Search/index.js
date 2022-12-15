@@ -23,10 +23,11 @@ const Search = () => {
         setDbproducts(data);
       });
     }
+    console.log(dbproducts);
   };
 
   const searchProducts = () => {
-    // searchProductsByName();
+    searchProductsByName();
 
     if (productRef.current.value !== null && productRef.current.value !== "") {
       searchString = productRef.current.value;
@@ -62,6 +63,7 @@ const Search = () => {
 
   useEffect(() => {
     searchProducts();
+    // searchProductsByName();
     /* eslint-disable-next-line */
   }, []);
 

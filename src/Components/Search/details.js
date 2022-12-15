@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isDealerService } from "../../Services/LoginService";
 import { AddProductAction } from "../Actions/AddProduct";
+import StarRating from "./StarRating";
 import "./index.css";
+import CreateReviews from "../CreateReviews";
 
 const Details = () => {
   const [productTitle, setproductTitle] = useState([]);
@@ -142,7 +144,7 @@ const Details = () => {
                 </div>
               </li>
           ))}
-          {/* <li className="list-group-item">
+          {<li className="list-group-item">
             <div className="row">
               <div className="col-md-4">
                 <span>
@@ -156,7 +158,10 @@ const Details = () => {
                 </span>
               </div>
             </div>
-          </li> */}
+          </li> }
+          <div>
+            <CreateReviews productID={product_id} product={product} />
+          </div>
         </ul>
       </div>
     </div>

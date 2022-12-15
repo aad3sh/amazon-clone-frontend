@@ -2,7 +2,7 @@ import SideBar from "../SideBar";
 import {Outlet} from "react-router-dom";
 const Profile =()=>{
 return(
-  <div className="row ps-0">
+  <div className="row ps-0 wd-bg-transparent">
       <div className="col-3">
           <SideBar />
       </div>
