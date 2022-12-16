@@ -38,7 +38,7 @@ const Card = () => {
                 style={{ fontSize: "20px" }}
                 className="w-100 wd-top-offers ps-5 pt-2 pb-2"
               >
-                Previously Liked
+                Previously Liked Items
               </h4>
             </div>
             <LogOutLikes />

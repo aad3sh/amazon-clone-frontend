@@ -56,19 +56,19 @@ const DetailsDB = () => {
               </div>
             </div>
           </li>
-          <li className="list-group-item">
-            <div className="row">
-              <div className="col col-md-4">
-                <span>
-                  <b>asin</b>
-                </span>{" "}
-                :
-              </div>
-              <div className="col col-md-8">
-                <span>{product["asin"]}</span>
-              </div>
-            </div>
-          </li>
+          {/*<li className="list-group-item">*/}
+          {/*  <div className="row">*/}
+          {/*    <div className="col col-md-4">*/}
+          {/*      <span>*/}
+          {/*        <b>asin</b>*/}
+          {/*      </span>{" "}*/}
+          {/*      :*/}
+          {/*    </div>*/}
+          {/*    <div className="col col-md-8">*/}
+          {/*      <span>{product["asin"]}</span>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</li>*/}
           {/* <li className="list-group-item">
             <div className="row">
               <div className="col col-md-4">
@@ -165,7 +165,7 @@ const DetailsDB = () => {
           </li> */}
         </ul>
         <div>
-          <CreateReviews productID={product_id} product={product} />
+          <CreateReviews productID={product['_id']} product={product} />
         </div>
       </div>
     </div>

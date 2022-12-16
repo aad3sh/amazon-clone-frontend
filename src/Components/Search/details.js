@@ -159,9 +159,11 @@ const Details = () => {
               </div>
             </div>
           </li> }
-          <div>
-            <CreateReviews productID={product_id} product={product} />
-          </div>
+          {/*{login.logedIn && (*/}
+          {/*    <div>*/}
+          {/*      <CreateReviews productID={productAllDetails['id']} product={product} />*/}
+          {/*    </div>*/}
+          {/*)}*/}
         </ul>
       </div>
     </div>

@@ -35,7 +35,12 @@ const CreateReviews = ({ productID }) => {
     updateErrors(validation(initReview));
 
     if (!errors.review && initReview.review !== "") {
+
+      console.log("Hello Abhishek");
+      console.log(product);
+      console.log(initReview);
       CreateReviewAction(initReview).then(() => {
+
         getProductAction(productID, dispatch);
       });
     }
@@ -47,6 +52,9 @@ const CreateReviews = ({ productID }) => {
   };
 
   useEffect(() => {
+    console.log("Checking product details");
+    console.log(product);
+    // product.reviews.filter();
     setReview({ ...initReview, rating: val });
     /* eslint-disable-next-line */
   }, [val]);

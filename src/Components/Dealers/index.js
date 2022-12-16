@@ -244,7 +244,7 @@ const Dealers = () => {
 
                   <div className="row mx-auto mb-auto">
                     <div className="col-12 w-100 my-3">
-                      {element._id && (
+                      {element.asin && (
                         <Link to={`/details_db/${element._id}`}>
                           <button className="btn btn-primary w-100">
                             Show

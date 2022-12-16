@@ -30,31 +30,33 @@ const LogInLikes = () => {
     GetLikes().then((data) => setLikes(data));
   }, []);
   const Card = ({ p }) => {
-    return (
-      <div style={{ textAlign: "center", margin: "20px" }}>
-        <img
-          className="multi-image"
-          src={p.product.imageUrl}
-          style={{
-            width: "100%",
-            height: "210px",
-            objectFit: "contain",
-            marginBottom: "5px",
-            marginTop: "5px",
-          }}
-          alt="Product Details"
-        />
+      if(p!==null) {
+          return (
+              <div style={{textAlign: "center", margin: "20px"}}>
+                  <img
+                      className="multi-image"
+                      src={p.product.imageUrl}
+                      style={{
+                          width: "100%",
+                          height: "210px",
+                          objectFit: "contain",
+                          marginBottom: "5px",
+                          marginTop: "5px",
+                      }}
+                      alt="Product Details"
+                  />
 
-        <h5 className="text" style={{ fontSize: "15px", padding: "5px 0" }}>
-          {p.product.name}
-        </h5>
-        <h5 style={{ fontSize: "15px", padding: "5px 0" }}>
-          <span style={{ color: "green", padding: "0px 2px" }}>
+                  <h5 className="text" style={{fontSize: "15px", padding: "5px 0"}}>
+                      {p.product.name}
+                  </h5>
+                  <h5 style={{fontSize: "15px", padding: "5px 0"}}>
+          <span style={{color: "green", padding: "0px 2px"}}>
             ${p.product.price}
           </span>
-        </h5>
-      </div>
-    );
+                  </h5>
+              </div>
+          );
+      }
   };
 
   const properties = {
@@ -94,7 +96,14 @@ const LogInLikes = () => {
     <>
       <Slider {...properties}>
         {likes.length > 0 &&
-          likes?.map((p) => {
+          likes?.filter((p)=>{
+              if(p.product===null){
+                  console.log(p);
+                  console.log(p.product);
+                  return false;
+              }
+              return true;
+          }).map((p) => {
             return (
               <Link
                 to={`/details_db/${p.product._id}`}

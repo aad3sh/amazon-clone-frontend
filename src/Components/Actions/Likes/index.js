@@ -23,7 +23,9 @@ export const removeLikeAction = async (pid) => {
 };
 
 export const findAllLikes = async (dispatch) => {
-  const likes = await LikesService();
+  // const likes = await LikesService();
+  const likes = [];
+
   if (likes != null) {
     dispatch({
       type: FIND_ALL_LIKES,
