@@ -118,8 +118,8 @@ const Search = () => {
                 <ul className="list-group">
                   {dbproducts.map((prod) => (
                     <li
-                      className="list-group-item"
-                      style={{ backgroundColor: "rgba(137, 215, 245, 0.83)" }}
+                      className="list-group-item "
+                      style={{backgroundColor: "rgba(194, 227, 227, 0.274)" }}
                       key={"l" + prod._id}
                     >
                       <Link to={`/details_db/${prod._id}`}>
