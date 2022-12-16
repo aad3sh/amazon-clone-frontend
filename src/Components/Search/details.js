@@ -85,20 +85,20 @@ const Details = () => {
       <div>
         <h1>{productTitle}</h1>
 
-        <div className="row">
-          <div className="col">
-            {login.logedIn && isDealerService() && (
-              <button
-                className="col-2 btn-primary float-end rounded"
-                onClick={() => {
-                  addToCart();
-                }}
-              >
-                Add Product
-              </button>
-            )}
-          </div>
-        </div>
+        {/*<div className="row">*/}
+        {/*  <div className="col">*/}
+        {/*    {login.logedIn && isDealerService() && (*/}
+        {/*      <button*/}
+        {/*        className="col-2 btn-primary float-end rounded"*/}
+        {/*        onClick={() => {*/}
+        {/*          addToCart();*/}
+        {/*        }}*/}
+        {/*      >*/}
+        {/*        Add Product*/}
+        {/*      </button>*/}
+        {/*    )}*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <div className="my-3 mx-auto" style={{ textAlign: "center" }}>
           <img
             src={productAllDetails['image']}
