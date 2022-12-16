@@ -19,7 +19,7 @@ const NextBtn = (props) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <i className="fa-solid fa-angle-right" style={{ color: "blue" }}></i>
+      <i className="fa-regular fa-angle-right" style={{ color: "blue" }}></i>
     </div>
   );
 };

@@ -106,7 +106,7 @@ const Search = () => {
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
-                <strong>From the DB</strong>
+                <strong>Dealer's Choice</strong>
               </button>
             </h2>
             <div

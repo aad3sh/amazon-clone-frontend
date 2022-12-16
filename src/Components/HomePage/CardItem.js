@@ -16,13 +16,10 @@ const Card = () => {
     return (
     <>
       {login.logedIn && (
-        <div className="text-end mt-2">
-          <h6 className="wd-welcome">
-            {" "}
-            <strong>
-              Welcome, {JSON.parse(localStorage.getItem("LoggedIn"))?.firstName}
-            </strong>
-          </h6>
+        <div className="mt-2">
+          <h4 className="wd-welcome">
+            Welcome, {JSON.parse(localStorage.getItem("LoggedIn"))?.firstName}
+          </h4>
         </div>
       )}
       <div className="pt-2 wd-carousel">
@@ -57,7 +54,7 @@ const Card = () => {
         </>
       ) : (
         <>
-          <div className="wd-multi-item-carousel border rounded border-4 border-light">
+          <div className="wd-multi-item-carousel border rounded border-4 border-light wd-bg-color link-light">
             <div className="border border-top-0 border-end-0 border-4 border-start-0 border-light d-inline d-flex">
               <h4
                 style={{ fontSize: "25px" }}
@@ -68,7 +65,7 @@ const Card = () => {
             </div>
             <LogInLikes />
           </div>
-          <div className="wd-multi-item-carousel border rounded border-4 border-light">
+          <div className="wd-multi-item-carousel border rounded border-4 border-light wd-bg-color link-light">
             <div className="border border-top-0 border-end-0 border-4 border-start-0 border-light d-inline d-flex">
               <h4
                 style={{ fontSize: "25px" }}
